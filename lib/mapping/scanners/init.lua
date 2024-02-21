@@ -6,14 +6,6 @@ local plethora = require("mapping.scanners.plethora")
 
 local selected
 
-if ap.search_scanners() then
-  selected = ap
-elseif plethora.search_scanners() then
-  selected = plethora
-else
-  error("No scanners found.", 0)
-end
-
 ---@class ScannerShim
 ---@field scan_into fun(map:Map, x:number, y:number, z:number):ScanData|nil
 ---@field search_scanners fun():boolean
@@ -40,7 +32,31 @@ local scanners = {}
 ---@param z integer The z position of the centerpoint of the scan.
 ---@return boolean success Whether the scan was successful.
 function scanners.scan_into(map, x, y, z)
+  if not selected then
+    error("Scanners have not been set up.", 2)
+  end
   return selected.scan_into(map, x, y, z)
+end
+
+--- Set up the scanner shim.
+---@return boolean success Whether the setup was successful.
+---@return string? message The error message, if the setup was not successful.
+function scanners.setup()
+  if ap.search_scanners() then
+    selected = ap
+    return true
+  elseif plethora.search_scanners() then
+    selected = plethora
+    return true
+  else
+    return false, "No scanners found."
+  end
+end
+
+--- Check if the scanner shim is set up.
+---@return boolean success Whether the scanner shim is set up.
+function scanners.is_setup()
+  return selected ~= nil
 end
 
 return scanners
