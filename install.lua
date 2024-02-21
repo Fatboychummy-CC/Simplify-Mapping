@@ -38,7 +38,7 @@ local use_diffs = true
 -- # You can use ranges to include multiple files (i.e: '+1-3' to include 1 to 3).
 local diffs = {
   lib_only_no_mapping = {
-    "+1-5",
+    "+2-5",
   },
   lib_only_with_mapping = {
     "lib_only_no_mapping",
@@ -46,6 +46,7 @@ local diffs = {
   },
   tests = {
     "lib_only_with_mapping",
+    "+1",
     "+9-10"
   },
   all = {
