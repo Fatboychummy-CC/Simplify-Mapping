@@ -1,7 +1,7 @@
 --- Main mapping library.
 
 local expect = require "cc.expect".expect ---@type fun(arg_n:integer, value:any, ...:string)
-local scanners = require "mapping.scanners"
+local scanners
 local file_io = require "mapping.file_io"
 
 ---@class MapData
@@ -250,6 +250,10 @@ end
 ---@return boolean success Whether the scan was successful.
 function map:scan(x, y, z)
   check_id(self)
+
+  if not scanners then
+    scanners = require "mapping.scanners"
+  end
 
   return scanners.scan_into(self, x, y, z)
 end
