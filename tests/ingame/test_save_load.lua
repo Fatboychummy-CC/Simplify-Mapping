@@ -3,7 +3,7 @@
 local mapping = require "mapping"
 local scanners = require "mapping.scanners"
 
-local SAVE_PATH = "Simplify-Mapping/test_map.map"
+local SAVE_PATH = "Simplify-Mapping/test_map.ccsmap"
 
 local X_SIZE = 10
 local Y_SIZE = 12
