@@ -15,7 +15,7 @@ local function add_paths(...)
   package.path = path
 end
 
-add_paths("lib", "tests")
+add_paths("tests")
 
 local verbose = {
   v = true,
@@ -89,6 +89,7 @@ else
   wrapped.setTextColor(colors.white)
   wrapped.clear()
   wrapped.setCursorPos(1, 1)
+  wrapped.setTextScale(0.5)
 
   old = term.redirect(wrapped)
 

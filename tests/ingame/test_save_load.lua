@@ -1,6 +1,7 @@
 ---@diagnostic disable: undefined-global, need-check-nil
 
 local mapping = require "mapping"
+local scanners = require "mapping.scanners"
 
 local SAVE_PATH = "Simplify-Mapping/test_map.map"
 
@@ -12,7 +13,14 @@ local MAP_NAME = "John"
 
 local map
 
-suite.suite "Save/Load"
+suite.suite "Scan/Save/Load"
+  "Set up scanners" (function()
+    local ok, err = scanners.setup()
+
+    if not ok then
+      FAIL(err)
+    end
+  end)
   "Save with scan, no error" (function()
     map = mapping.new(MAP_NAME)
     map:set_size(X_SIZE, Y_SIZE, Z_SIZE)
