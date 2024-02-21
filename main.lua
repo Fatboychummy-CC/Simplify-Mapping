@@ -56,6 +56,7 @@ end
 
 local old, ok, err
 
+---@diagnostic disable-next-line undefined-global we're checking for the existence of a library that exists on certain platforms
 if periphemu then
   -- Running in CraftOS-PC, cannot run all tests.
 
