@@ -11,13 +11,15 @@ To get started with contributing, please follow these steps:
 2. Create a new branch for your changes.
 3. Make your changes and **test them thoroughly.** Your changes should not break
   existing functionality, and will not be accepted without tests.
-  1. The testing framework used is
-    [CCTest-Framework](https://github.com/Fatboychummy-CC/CCTest-Framework). The
-    installer will not install the framework, so you will need to install it
-    manually to the `tests` folder (just the `Framework` folder is required).
 4. Commit your changes with a descriptive commit message.
 5. Push your changes to your forked repository.
 6. Open a pull request to the main repository.
+
+The testing framework used is
+[CCTest-Framework](https://github.com/Fatboychummy-CC/CCTest-Framework). The
+installer will not install the framework, so you will need to install it
+manually to the `tests` folder (just the `Framework` folder is required).
+
 
 ## Guidelines
 
