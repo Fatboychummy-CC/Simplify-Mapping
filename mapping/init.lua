@@ -259,6 +259,21 @@ function map:scan(x, y, z)
   return scanners.scan_into(self, x, y, z)
 end
 
+--- Scan the front, top, and bottom of the turtle and write the information to the map.
+---@param x integer The x position of the turtle.
+---@param y integer The y position of the turtle.
+---@param z integer The z position of the turtle.
+---@param facing turtle_facing The direction the turtle is facing, as a number from 0 to 3 (0 is north, 1 is east, 2 is south, 3 is west).
+function map:turtle_scan(x, y, z, facing)
+  check_id(self)
+
+  if not scanners then
+    scanners = require "mapping.scanners"
+  end
+
+  return scanners.turtle_scan_into(self, x, y, z, facing)
+end
+
 --- Get the volume of the map.
 ---@return integer volume The volume of the map.
 function map:volume()
