@@ -1,4 +1,4 @@
-# Simplify-Mapping
+# Simplify-Mapping v0.2.0
 Simplifies mapping your world with Advanced Peripherals' Geoscanner, or 
 Plethora's Block Scanner. This library is designed to be easy to use, and
 easy to understand. It can be used for a variety of purposes, such as

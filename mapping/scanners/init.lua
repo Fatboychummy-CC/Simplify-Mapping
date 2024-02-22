@@ -6,10 +6,6 @@ local plethora = require("mapping.scanners.plethora")
 
 local selected
 
----@class ScannerShim
----@field scan_into fun(map:Map, x:number, y:number, z:number):ScanData|nil
----@field search_scanners fun():boolean
-
 ---@class ScanData The data of a scan.
 ---@field x number The width of the scan.
 ---@field y number The height of the scan.
@@ -57,6 +53,27 @@ end
 ---@return boolean success Whether the scanner shim is set up.
 function scanners.is_setup()
   return selected ~= nil
+end
+
+--- In the case that the user has multiple scanners, this function allows the
+--- user to select which scanner to use.
+--- @param peripheral_name string The name of the peripheral to select.
+function scanners.select_scanner(peripheral_name)
+  if ap.select_scanner(peripheral_name) then
+    selected = ap
+    return true
+  elseif plethora.select_scanner(peripheral_name) then
+    selected = plethora
+    return true
+  end
+
+  return false, "No scanner with that name found."
+end
+
+--- Get the selected scanner.
+---@return string? scanner_name The name of the selected scanner, or nil if no scanner is selected.
+function scanners.get_selected_scanner()
+  return selected and selected.selected_scanner
 end
 
 return scanners

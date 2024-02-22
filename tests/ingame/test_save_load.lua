@@ -18,8 +18,15 @@ suite.suite "Scan/Save/Load"
     local ok, err = scanners.setup()
 
     if not ok then
-      FAIL(err)
+      END(err)
     end
+    local scanner_name = scanners.get_selected_scanner()
+
+    if not scanner_name then
+      END("No scanner selected!")
+    end
+
+    PASS(("Selected scanner: %s"):format(scanner_name))
   end)
   "Save with scan, no error" (function()
     map = mapping.new(MAP_NAME)

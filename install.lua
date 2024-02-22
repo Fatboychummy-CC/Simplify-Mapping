@@ -12,6 +12,7 @@ local to_get = {
   "extern:tests/craftos-pc/test_map.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/tests/craftos-pc/test_map.lua",
   "extern:tests/ingame/test_save_load.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/tests/ingame/test_save_load.lua",
   "extern:install.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/install.lua",
+  "extern:mapping/scanners/shim_base.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/mapping/scanners/shim_base.lua",
 }
 local program_name = "Simplify Mapping"
 local pinestore_id = 60 -- Set this to the ID of the pinestore project if you wish to note to pinestore that a download has occurred.

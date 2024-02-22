@@ -25,7 +25,8 @@ local file_io = require "mapping.file_io"
 ---@field origin_z integer The z offset of the map. This offset is applied to all operations on the map, so that the map can correspond to real-world coordinates.
 local map = {
   BlockState = require "mapping.block_state",
-  _id = {} -- Identifier object for the map, to ensure methods are called with `:` syntax.
+  _id = {}, -- Identifier object for the map, to ensure methods are called with `:` syntax.
+  _version = "0.2.0"
 }
 
 local function check_id(self)

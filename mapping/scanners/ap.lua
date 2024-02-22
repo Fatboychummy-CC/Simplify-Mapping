@@ -8,6 +8,8 @@ local ap = {
   selected_scanner = nil ---@type string? The name of the selected scanner.
 }
 
+local GEOSCANNER_TYPE = "geoScanner"
+
 --- Scan the area around the given position.
 ---@param map Map The map to scan into.
 ---@param pos_x number The x position of the centerpoint of the scan.
@@ -58,11 +60,27 @@ function ap.scan_into(map, pos_x, pos_y, pos_z)
   return true
 end
 
+--- Search for scanners, and select the first one found.
+---@return boolean success Whether a scanner was found.
 function ap.search_scanners()
-  local scanner = peripheral.find("geoScanner")
+  local scanner = peripheral.find(GEOSCANNER_TYPE)
 
   if scanner then
     ap.selected_scanner = peripheral.getName(scanner)
+    return true
+  end
+
+  return false
+end
+
+--- In the case that the user has multiple scanners, this function allows the
+--- user to select which scanner to use. Shims should do error checking to
+--- ensure that the scanner is valid.
+---@param peripheral_name string The name of the peripheral to select.
+---@return boolean success Whether the scanner given was selected.
+function ap.select_scanner(peripheral_name)
+  if peripheral.isPresent(peripheral_name) and peripheral.getType(peripheral_name) == GEOSCANNER_TYPE then
+    ap.selected_scanner = peripheral_name
     return true
   end
 
