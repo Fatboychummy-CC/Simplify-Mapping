@@ -2,13 +2,13 @@
 
 local to_get = {
   "extern:main.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/main.lua",
-  "extern:mapping/block_movement.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/lib/mapping/block_movement.lua",
-  "extern:mapping/block_state.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/lib/mapping/block_state.lua",
-  "extern:mapping/file_io.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/lib/mapping/file_io.lua",
-  "extern:mapping/init.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/lib/mapping/init.lua",
-  "extern:mapping/scanners/ap.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/lib/mapping/scanners/ap.lua",
-  "extern:mapping/scanners/init.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/lib/mapping/scanners/init.lua",
-  "extern:mapping/scanners/plethora.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/lib/mapping/scanners/plethora.lua",
+  "extern:mapping/block_movement.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/mapping/block_movement.lua",
+  "extern:mapping/block_state.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/mapping/block_state.lua",
+  "extern:mapping/file_io.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/mapping/file_io.lua",
+  "extern:mapping/init.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/mapping/init.lua",
+  "extern:mapping/scanners/ap.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/mapping/scanners/ap.lua",
+  "extern:mapping/scanners/init.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/mapping/scanners/init.lua",
+  "extern:mapping/scanners/plethora.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/mapping/scanners/plethora.lua",
   "extern:tests/craftos-pc/test_map.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/tests/craftos-pc/test_map.lua",
   "extern:tests/ingame/test_save_load.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/tests/ingame/test_save_load.lua",
   "extern:install.lua:https://raw.githubusercontent.com/Fatboychummy-CC/Simplify-Mapping/main/install.lua",
@@ -146,9 +146,9 @@ local function calculate_diffs(version)
   local files = {}
 
   if not version or not diffs[version] then
+    printError("Invalid version: " .. tostring(version))
     error("Invalid version.", 0)
   end
-
 
   local seen_diffs = {}
   local to_resolve = {}
@@ -227,10 +227,8 @@ local function calculate_diffs(version)
   return to_return
 end
 
-local function get(version, ...)
+local function get(...)
   local remotes = table.pack(...)
-
-  local actual_to_get = calculate_diffs(version)
 
   for i = 1, remotes.n do
     local remote = remotes[i]
@@ -324,7 +322,7 @@ if key == keys.y then
       parse_pinestore_response(handle.readAll())
       handle.close()
     else
-      print_warning("Failed to connect to pinestore.")
+      print_warning("Failed to connect to pinestore:", err)
     end
   end
 else
