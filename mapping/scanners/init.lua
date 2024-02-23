@@ -117,7 +117,9 @@ end
 
 --- In the case that the user has multiple scanners, this function allows the
 --- user to select which scanner to use.
---- @param peripheral_name string The name of the peripheral to select.
+---@param peripheral_name string The name of the peripheral to select.
+---@return boolean success Whether the operation was successful.
+---@return string? message The error message if the operation was not successful.
 function scanners.select_scanner(peripheral_name)
   if ap.select_scanner(peripheral_name) then
     selected = ap
