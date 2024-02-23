@@ -112,6 +112,39 @@ function map:set_size(x, y, z)
   end
 end
 
+--- Get the size of the map.
+---@return integer x The width of the map.
+---@return integer y The height of the map.
+---@return integer z The depth of the map.
+function map:get_size()
+  check_id(self)
+  return self.data.x, self.data.y, self.data.z
+end
+
+--- Set the offset of the map.
+---@param x integer The x offset of the map.
+---@param y integer The y offset of the map.
+---@param z integer The z offset of the map.
+function map:set_origin(x, y, z)
+  check_id(self)
+  expect(1, x, "number")
+  expect(2, y, "number")
+  expect(3, z, "number")
+
+  self.origin_x = x
+  self.origin_y = y
+  self.origin_z = z
+end
+
+--- Get the offset of the map.
+---@return integer x The x offset of the map.
+---@return integer y The y offset of the map.
+---@return integer z The z offset of the map.
+function map:get_origin()
+  check_id(self)
+  return self.origin_x, self.origin_y, self.origin_z
+end
+
 --- Set the state of a block.
 ---@param x integer The x position of the block.
 ---@param y integer The y position of the block.
@@ -200,39 +233,6 @@ function map:get_block(x, y, z)
   end
 
   return self.data.blocks[x][y][z]
-end
-
---- Set the offset of the map.
----@param x integer The x offset of the map.
----@param y integer The y offset of the map.
----@param z integer The z offset of the map.
-function map:set_origin(x, y, z)
-  check_id(self)
-  expect(1, x, "number")
-  expect(2, y, "number")
-  expect(3, z, "number")
-
-  self.origin_x = x
-  self.origin_y = y
-  self.origin_z = z
-end
-
---- Get the offset of the map.
----@return integer x The x offset of the map.
----@return integer y The y offset of the map.
----@return integer z The z offset of the map.
-function map:get_origin()
-  check_id(self)
-  return self.origin_x, self.origin_y, self.origin_z
-end
-
---- Get the size of the map.
----@return integer x The width of the map.
----@return integer y The height of the map.
----@return integer z The depth of the map.
-function map:get_size()
-  check_id(self)
-  return self.data.x, self.data.y, self.data.z
 end
 
 --- Save a map to a file.
