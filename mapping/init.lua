@@ -75,6 +75,15 @@ function map.load(map_object, path)
   return map_object
 end
 
+--- Save a map to a file.
+---@param path string The path to the file.
+function map:save(path)
+  check_id(self)
+  expect(1, path, "string")
+
+  return file_io.save_map(path, self)
+end
+
 --- Set the size of the map. Loads the map with unknown blocks. Note that this creates a map of from -x to x, and so on, thus the size is essentially double what you put here.
 --- WARNING: This wipes any map data in the map, and may take a long while for large maps!
 ---@param x integer The width/2 of the map.
@@ -233,15 +242,6 @@ function map:get_block(x, y, z)
   end
 
   return self.data.blocks[x][y][z]
-end
-
---- Save a map to a file.
----@param path string The path to the file.
-function map:save(path)
-  check_id(self)
-  expect(1, path, "string")
-
-  return file_io.save_map(path, self)
 end
 
 --- Scan a map using a scanner.
