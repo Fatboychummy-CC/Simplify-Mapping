@@ -33,6 +33,7 @@ The main header is a minimum of 18 bytes long, and is as follows:
   header if this is the second (or later) file in a multi-file map. The first
   file will have the size of the map in each dimension.
 
+### Flags
 At the moment, only a few flags exist (but there are 16 bits, so there's room
 for more):
 
@@ -42,8 +43,6 @@ for more):
   as well as the path itself.
 - -- -- -- -- -- -- -1 --: Map is part of a multi-file map, but is the last 
   file. No length or path will be specified at the end of the header.
-- -- -- -- -- -- -- 1- --: Map is part of a multi-file map, but is the first 
-  file. 
 
 ### Flag-Dependent Header Data
 
