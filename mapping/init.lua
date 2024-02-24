@@ -81,7 +81,7 @@ function map:save(path)
   check_id(self)
   expect(1, path, "string")
 
-  return file_io.save_map(path, self)
+  return file_io.save_map(self, path)
 end
 
 --- Set the size of the map. Loads the map with unknown blocks. Note that this creates a map of from -x to x, and so on, thus the size is essentially double what you put here.

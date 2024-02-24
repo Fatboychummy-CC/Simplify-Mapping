@@ -4,6 +4,7 @@ local mapping = require "mapping"
 local scanners = require "mapping.scanners"
 
 local SAVE_PATH = "Simplify-Mapping/test_map.ccsmap"
+fs.delete(SAVE_PATH) -- ensure we are generating a new file each test.
 
 local X_SIZE = 10
 local Y_SIZE = 12
